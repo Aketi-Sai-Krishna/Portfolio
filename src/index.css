@@ -1,0 +1,181 @@
+@import './styles/tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: var(--tracking-tight);
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+}
+
+/* Anchor targets clear the sticky navbar instead of hiding under it. */
+section[id] {
+  scroll-margin-top: 84px;
+}
+
+/* Deliberate selection and scrollbar treatment instead of browser defaults. */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+html {
+  scrollbar-color: var(--color-surface-border) var(--color-bg);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-border);
+  border-radius: 999px;
+  border: 2px solid var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover);
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* Accessible focus ring, visible on keyboard nav */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+.section {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md) 0;
+}
+
+main > section:last-of-type {
+  padding-bottom: var(--space-xl);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gradient-text {
+  background: var(--gradient-signature);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media print {
+  .navbar,
+  .hero__canvas-layer,
+  .hero__scroll-cue,
+  .btn {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #111;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

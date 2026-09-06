@@ -1,0 +1,204 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  background: var(--color-ink);
+  isolation: isolate;
+}
+
+.hero__reveal-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cosmic-dust {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.cosmic-dust__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Reduced-motion fallback: a static ember-toned gradient instead of the
+   animated particle field. */
+.cosmic-dust__static {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% 30%, #3a1a0c 0%, #1a0a04 55%, #000 100%);
+}
+
+.hero__vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.1) 40%, rgba(10, 10, 10, 0.55));
+}
+
+.hero__shell {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  min-height: 100svh;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.hero__content {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  max-width: 660px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding-block: 6rem;
+}
+
+/* The portrait sits in its own column of the same shell every other
+   section uses, so its right edge lines up with theirs exactly — and
+   never overlaps the text column, which has its own max-width below. */
+.hero__portrait {
+  position: relative;
+  flex-shrink: 0;
+  align-self: flex-end;
+  height: min(82svh, 640px);
+  max-height: calc(100svh - 6rem);
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero__portrait-glow {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  transform: translateX(-50%);
+  width: 90%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 196, 107, 0.22) 0%, rgba(179, 64, 31, 0.14) 45%, transparent 75%);
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+.hero__portrait-img {
+  position: relative;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.55));
+  -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+}
+
+@media (max-width: 1300px) {
+  .hero__portrait {
+    display: none;
+  }
+  .hero__shell {
+    justify-content: center;
+  }
+  .hero__content {
+    align-items: flex-start;
+    max-width: 640px;
+  }
+}
+
+.hero__title {
+  color: #fff;
+  font-size: var(--fs-hero);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  margin-top: var(--space-sm);
+}
+
+.hero__subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.4vw + 0.9rem, 1.5rem);
+  color: rgba(255, 255, 255, 0.92);
+  margin-top: var(--space-sm);
+  max-width: 100%;
+  text-align: justify;
+}
+
+@media (min-width: 1301px) {
+  /* Above the portrait breakpoint, the text column is deliberately
+     narrower (660px) so the portrait has room — so the title gets a
+     tuned font-size here specifically to guarantee it stays on one line
+     rather than wrapping against that narrower column. */
+  .hero__title {
+    font-size: clamp(2.4rem, 3vw + 1rem, 4rem);
+    white-space: nowrap;
+  }
+}
+
+.hero__cta-text {
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.hero__cta-primary {
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+}
+
+.hero__cta-ghost {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+.hero__cta-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.hero__scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: var(--space-xl);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.hero__scroll-cue:hover {
+  color: #fff;
+}
+
+@media (max-width: 720px) {
+  .hero__content {
+    padding-top: var(--space-xl);
+  }
+}
+

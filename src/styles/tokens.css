@@ -1,0 +1,90 @@
+:root {
+  /*
+   * Palette (from the Lumora reference), plus one deliberate contrast
+   * adjustment noted below.
+   *   --color-ink        #0A0A0A   near-black — dark cards / pills / overlays
+   *   --color-sage        #E6E5E2   hairline border ("line" in the reference)
+   *   --color-parchment   #E3E2DF   secondary surface ("surface-2")
+   *   --color-mist        #F1F0EE   primary surface / card fill
+   *   --color-paper       #FFFFFF   page background
+   *   --color-accent      #B15F2C   the one accent hue (burnt orange), plus
+   *                                 its gradient pair #CF8047 -> #97501F
+   *
+   * This is a near-monochrome system with exactly one accent color, used
+   * for: eyebrow labels, focus rings, link/hover states, the lead stat,
+   * and the brand mark. Everything else stays in ink/white/neutral.
+   *
+   * Contrast note: the reference's --muted (#8D8D8D) is ~3.4:1 on white,
+   * under WCAG AA for body text. Two-tier fix: --color-text-muted is a
+   * darkened variant for real reading (About copy, stat labels); the
+   * reference's literal muted lives on as --color-subtle, reserved for
+   * decorative/tertiary marks only.
+   */
+  --color-ink: #0a0a0a;
+  --color-sage: #e6e5e2;
+  --color-parchment: #e3e2df;
+  --color-mist: #f1f0ee;
+  --color-paper: #ffffff;
+
+  --color-accent: #b15f2c;
+  --color-accent-from: #cf8047;
+  --color-accent-to: #97501f;
+  --color-subtle: #8d8d8d;
+
+  --color-bg: var(--color-paper);
+  --color-bg-elevated: var(--color-mist);
+  --color-surface: var(--color-mist);
+  --color-surface-alt: var(--color-parchment);
+  --color-surface-border: var(--color-sage);
+
+  --color-text: var(--color-ink);
+  --color-text-muted: rgba(10, 10, 10, 0.62);
+  --color-text-faint: rgba(10, 10, 10, 0.4);
+
+  --color-border-hover: rgba(10, 10, 10, 0.28);
+  --color-accent-ring: rgba(177, 95, 44, 0.35);
+
+  --gradient-signature: linear-gradient(135deg, var(--color-accent-from) 0%, var(--color-accent-to) 100%);
+  --gradient-signature-soft: linear-gradient(135deg, rgba(207, 128, 71, 0.14), rgba(151, 80, 31, 0.14));
+
+  /* ---- Type: Onest is the only typeface, per the reference ---- */
+  --font-display: 'Onest', 'Segoe UI', sans-serif;
+  --font-body: 'Onest', 'Segoe UI', sans-serif;
+  --font-mono: 'Onest', 'Segoe UI', sans-serif;
+
+  --fs-hero: clamp(2.75rem, 6vw + 1rem, 5.5rem);
+  --fs-h2: clamp(2rem, 3vw + 1rem, 3rem);
+  --fs-h3: clamp(1.25rem, 1.4vw + 0.8rem, 1.75rem);
+  --fs-body: 1rem;
+  --fs-body-lg: 1.0625rem;
+  --fs-small: 0.875rem;
+  --fs-mono: 0.8125rem;
+
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.05em;
+
+  /* ---- Space / layout ---- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.25rem;
+  --space-xl: 3.75rem;
+  --content-max: 1160px;
+
+  /* Radii pulled from the reference: control / card-sm / card */
+  --radius-sm: 0.875rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 2rem;
+
+  --shadow-glow: 0 16px 40px -18px rgba(10, 10, 10, 0.32);
+  --shadow-card: 0 12px 30px -18px rgba(10, 10, 10, 0.18);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 640px) {
+  :root {
+    --space-xl: 2.75rem;
+    --space-lg: 1.75rem;
+  }
+}
