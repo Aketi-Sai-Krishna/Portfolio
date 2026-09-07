@@ -5,6 +5,8 @@ An interactive portfolio built with **React 18 + TypeScript**, **Vite**, and
 effect (no WebGL) — a dark panel that paints a photo along the cursor's
 trail with a soft, fading brush.
 
+Live Demo : https://portfolio-kohl-three-1qhqhuap0a.vercel.app/
+
 ## Quick start
 
 ```bash
